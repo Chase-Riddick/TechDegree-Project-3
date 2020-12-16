@@ -1,10 +1,11 @@
-
 class Phrase():
 
     def __init__(self, phrase):
         self.phrase = phrase
 
-    def display(self, guesses): 
+
+    def display(self, guesses):
+        """ Diplays the amount of the active phrase already completed/ indentified by the user."""
         for letter in self.phrase:
             if letter == " ":
                 print(" ", end=" ")
@@ -19,14 +20,15 @@ class Phrase():
 
 
     def check_phrase(self, guess):
-        value = 0
+        """ If user guess is in phrase, it returns a true value."""
         if guess in self.phrase:
-            value += 1
-        return value
+            return True
+
 
     def check_complete(self, guesses):
-            check_complete_value = True
-            for letter in self.phrase:
-                if letter not in guesses:
-                    check_complete_value = False
-            return check_complete_value
+        """ Checks whether all the letters in the phrase are contained in the guess list; 
+        if it does, it returns true, otherwise false."""
+        for letter in self.phrase:
+            if letter not in guesses:
+                return False 
+        return True

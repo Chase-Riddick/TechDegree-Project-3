@@ -2,6 +2,13 @@ from game import Game
 from phrase import Phrase
 import sys
 
+def print_continue_playing_prompt():
+    """ Prints prompts asking user whether they would like to continue playing game."""
+    print("\n\n\n----- Would you like to continue playing? -----")
+    print("Enter 'C' if you'd like to continue, and play again.")
+    print("Enter 'E' if you would like to finish playing, and exit the application.")
+
+
 def  user_input():
     """Collects users input """
     user_input = input("What would you like to do? >>> ")
@@ -24,7 +31,7 @@ def constrain_user_input(input_function):
 
 
 def proceed_or_exit_app(user_command_input):
-    """ Runs user input, exiting if user inputted corresponding value."""
+    """ Runs user input, exiting if user inputs corresponding value."""
     user_command = user_command_input
     if user_command == "E":
         exit_app()
@@ -32,7 +39,7 @@ def proceed_or_exit_app(user_command_input):
 
 def exit_app():
     """ Completes exit of application."""
-    print("Thanks for taking the time to check out this application. \nHave a great day, and I'll hope to see you around here again soon.")
+    print("\nThanks for taking the time to check out this application. \nHave a great day, and I'll hope to see you around here again soon.")
     print("Bye bye!")
     sys.exit()
 
@@ -40,12 +47,8 @@ def exit_app():
 if __name__ == "__main__":
     
     while True: 
-        trial_game_instance = Game()
-        trial_game_instance.start()
-        print("\n\n\n----- Would you like to continue playing? -----")
-        print("Enter 'C' if you'd like to continue, and play again.")
-        print("Enter 'E' if you would like to finish playing, and exit the application.")
+        game_instance = Game()
+        game_instance.run_game()
+        print_continue_playing_prompt()
         user_command = constrain_user_input(user_input())
         proceed_or_exit_app(user_command)
-
-    
